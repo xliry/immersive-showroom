@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#020705" />
+    <meta name="description" content="Hyundai Accent immersive head-tracked digital showroom." />
+    <link rel="icon" href="data:," />
+    <title>HYUNDAI ACCENT / IMMERSIVE SHOWROOM</title>
+  </head>
+  <body>
+    <main id="app">
+      <canvas id="experience-canvas" aria-label="Hyundai Accent üç boyutlu showroom"></canvas>
+      <video id="input_video" playsinline muted></video>
+      <div class="noise" aria-hidden="true"></div>
+
+      <section id="ad-creative" class="ad-creative" aria-label="Hyundai Accent interaktif 3D reklamı">
+        <span class="ad-disclosure">REKLAM</span>
+        <span class="ad-copy">
+          <small>HYUNDAI DIGITAL SHOWROOM</small>
+          <strong>ACCENT</strong>
+          <span class="ad-line">HER AÇIDAN KEŞFET.</span>
+        </span>
+        <span class="ad-meta">2013 ACCENT / IMMERSIVE VIEW</span>
+        <span class="ad-interaction">SAHNE SEÇ / SÜRÜKLE</span>
+      </section>
+
+      <header class="hud hud--top">
+        <div class="brand">
+          <span class="eyebrow">HYUNDAI DIGITAL SHOWROOM</span>
+          <strong>ACCENT</strong>
+        </div>
+        <div class="systems" aria-label="Sistem durumları">
+          <span data-status="webgl">WEBGL <i></i></span>
+          <span data-status="camera">CAMERA <i></i></span>
+          <span data-status="tracking">TRACKING <i></i></span>
+        </div>
+      </header>
+
+      <section id="loading" class="loading-panel" aria-live="polite">
+        <div class="reticle" aria-hidden="true"><span></span></div>
+        <p class="eyebrow" id="stage-label">INITIALIZING RENDERER</p>
+        <div class="progress-row">
+          <div class="progress-track"><i id="progress-bar"></i></div>
+          <output id="progress-value">00</output>
+        </div>
+        <p class="loading-note">POINT CLOUD MATRIX / VEHICLE FORMATION</p>
+      </section>
+
+      <section id="permission" class="permission-panel" aria-labelledby="permission-title">
+        <p class="eyebrow">IMMERSIVE VIEW 01</p>
+        <h1 id="permission-title">EKRANIN ÖTESİNE<br />BAK.</h1>
+        <p>Baş hareketin perspektifi değiştirir. Kamera görüntüsü yalnızca bu cihazda işlenir; yüklenmez veya kaydedilmez.</p>
+        <div class="actions">
+          <button id="enable-camera" class="button button--primary">IMMERSIVE VIEW'I AÇ</button>
+          <button id="use-mouse" class="button">MOUSE İLE DEVAM ET</button>
+        </div>
+      </section>
+
+      <nav id="scene-views" class="scene-switcher" aria-label="3D sahne görünümleri">
+        <button class="is-active" data-scene-view="exterior" aria-pressed="true"><b>01</b> EXTERIOR</button>
+        <button data-scene-view="cockpit" aria-pressed="false"><b>02</b> COCKPIT</button>
+        <button data-scene-view="rear" aria-pressed="false"><b>03</b> REAR CABIN</button>
+        <button data-scene-view="detail" aria-pressed="false"><b>04</b> WHEEL DETAIL</button>
+      </nav>
+
+      <div id="toast" class="toast" role="status"></div>
+
+      <footer class="hud hud--bottom">
+        <div>
+          <span class="eyebrow">2013 HYUNDAI ACCENT</span>
+          <strong>DIGITAL INTERIOR / VIEW 01</strong>
+        </div>
+        <p id="interaction-hint">Yükleniyor — araç noktalar içinden oluşuyor</p>
+        <nav aria-label="Deneyim kontrolleri">
+          <button id="recalibrate" title="Yeniden kalibre et" aria-label="Yeniden kalibre et">CAL</button>
+          <button id="fullscreen" title="Tam ekran" aria-label="Tam ekran">FULL</button>
+          <button id="help" title="Yardım" aria-label="Yardım">?</button>
+        </nav>
+      </footer>
+
+      <aside id="diagnostics" class="diagnostics" hidden></aside>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

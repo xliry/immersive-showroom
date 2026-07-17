@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Ad Preview</title>
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; padding: 32px; background: #e5e7eb; color: #111827; font: 14px/1.4 Inter, Arial, sans-serif; }
+      h1 { margin: 0 0 24px; font-size: 24px; }
+      main { display: grid; gap: 28px; align-items: start; }
+      figure { width: fit-content; max-width: 100%; margin: 0; }
+      figcaption { display: flex; justify-content: space-between; margin-bottom: 8px; color: #4b5563; font: 12px/1 monospace; }
+      iframe { display: block; max-width: 100%; border: 0; background: #020705; box-shadow: 0 8px 24px rgba(0,0,0,.16); }
+      .mobile-row { display: flex; flex-wrap: wrap; gap: 28px; }
+    </style>
+  </head>
+  <body>
+    <h1>Hyundai Accent — responsive reklam önizleme</h1>
+    <main>
+      <figure>
+        <figcaption><span>MASTHEAD</span><span>970×250</span></figcaption>
+        <iframe title="970x250 masthead" src="/?ad=1" width="970" height="250" allow="camera"></iframe>
+      </figure>
+      <figure>
+        <figcaption><span>LEADERBOARD</span><span>728×90</span></figcaption>
+        <iframe title="728x90 leaderboard" src="/?ad=1" width="728" height="90" allow="camera"></iframe>
+      </figure>
+      <div class="mobile-row">
+        <figure>
+          <figcaption><span>MOBILE BANNER</span><span>320×100</span></figcaption>
+          <iframe title="320x100 mobile banner" src="/?ad=1" width="320" height="100" allow="camera"></iframe>
+        </figure>
+        <figure>
+          <figcaption><span>MEDIUM RECTANGLE</span><span>300×250</span></figcaption>
+          <iframe title="300x250 medium rectangle" src="/?ad=1" width="300" height="250" allow="camera"></iframe>
+        </figure>
+      </div>
+    </main>
+  </body>
+</html>
