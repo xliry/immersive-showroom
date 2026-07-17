@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { execFileSync } from 'node:child_process';
 import { build } from 'esbuild';
+import { zipSync } from 'fflate';
 
 const root = process.cwd();
 const sourceDir = path.join(root, 'dv360', 'src');
@@ -111,10 +111,13 @@ for (const format of formats) {
   });
 
   const zipPath = path.join(outputDir, name, `hyundai-accent-${name}.zip`);
-  execFileSync('powershell', [
-    '-NoProfile', '-Command',
-    `Compress-Archive -Path '${folder.replaceAll("'", "''")}\\*' -DestinationPath '${zipPath.replaceAll("'", "''")}' -CompressionLevel Optimal -Force`,
-  ]);
+  const archive = Object.fromEntries(
+    ['index.html', 'styles.css', 'creative.js', 'vehicle.js'].map((file) => [
+      file,
+      fs.readFileSync(path.join(folder, file)),
+    ]),
+  );
+  fs.writeFileSync(zipPath, zipSync(archive, { level: 9 }));
 
   for (const kind of ['backup', 'polite']) {
     const fallback = path.join(root, 'dv360', 'fallbacks', `${kind}-${name}.jpg`);
