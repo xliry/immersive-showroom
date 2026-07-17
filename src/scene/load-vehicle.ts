@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
 import { ASSETS, VEHICLE, VIEW } from '../config';
 import type { CameraView } from './camera-view-controller';
 
@@ -17,6 +18,7 @@ export async function loadVehicle(
   onProgress: (value: number, label: string) => void,
 ): Promise<VehicleController> {
   const loader = new GLTFLoader();
+  loader.setMeshoptDecoder(MeshoptDecoder);
   const gltf = await new Promise<Awaited<ReturnType<GLTFLoader['loadAsync']>>>((resolve, reject) => {
     loader.load(
       ASSETS.vehicle,
