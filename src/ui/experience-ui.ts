@@ -15,8 +15,6 @@ const get = <T extends HTMLElement>(id: string) => {
 export class ExperienceUI {
   private loading = get('loading');
   private permission = get('permission');
-  private progressBar = get<HTMLElement>('progress-bar');
-  private progressValue = get<HTMLOutputElement>('progress-value');
   private stage = get('stage-label');
   private hint = get('interaction-hint');
   private toast = get('toast');
@@ -41,10 +39,7 @@ export class ExperienceUI {
     this.setStatus('webgl', true);
   }
 
-  setProgress(value: number, label: string) {
-    const percent = Math.round(Math.min(1, Math.max(0, value)) * 100);
-    this.progressBar.style.transform = `scaleX(${percent / 100})`;
-    this.progressValue.value = percent.toString().padStart(2, '0');
+  setProgress(_value: number, label: string) {
     this.stage.textContent = label;
   }
 

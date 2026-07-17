@@ -23,7 +23,6 @@ const particleCount = textureSize * textureSize;
 
 const canvas = document.getElementById('experience-canvas') as HTMLCanvasElement;
 const progressBar = document.getElementById('progress-bar') as HTMLElement;
-const progressValue = document.getElementById('progress-value') as HTMLOutputElement;
 const stageLabel = document.getElementById('stage-label') as HTMLElement;
 const loadingNote = document.querySelector('.loading-note') as HTMLElement;
 const adLine = document.querySelector('.ad-line') as HTMLElement;
@@ -284,8 +283,7 @@ renderer.setAnimationLoop((time) => {
     const elapsed = Math.max(0, (time - readyAt) * 0.001);
     const gather = Math.min(1, 1 - Math.exp(-elapsed * 0.7));
     const activity = gather < 0.995 ? gather : 0.94 + Math.sin(seconds * 1.4) * 0.05;
-    progressValue.textContent = String(Math.round(activity * 100)).padStart(2, '0');
-    progressBar.style.transform = `scaleX(${activity})`;
+    progressBar.style.opacity = String(0.45 + activity * 0.55);
   }
   renderer.render(scene, camera);
 });

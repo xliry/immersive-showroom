@@ -1,7 +1,7 @@
 const query = new URLSearchParams(location.search);
 
 export const ASSETS = {
-  vehicle: '/assets/hyundai-accent-lite.glb',
+  vehicle: '/assets/hyundai-accent-quality.glb',
   splat: '/assets/hyundai-accent-real-v3.spz',
   particles: '/assets/hyundai-accent-particles.bin',
   faceModel: '/mediapipe/face_landmarker.task',

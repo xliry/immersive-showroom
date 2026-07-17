@@ -166,17 +166,19 @@ async function boot() {
     ui.setProgress(latestProgress, label);
   };
   try {
+    const vehiclePromise = POINT_CLOUD_LAB
+      ? null
+      : loadVehicle(renderer, scene, camera, onProgress);
     await splats.ready;
     onProgress(0.06, 'POINT CLOUD READY');
+    splats.startFormation();
     if (POINT_CLOUD_LAB) {
       document.body.classList.add('point-cloud-lab');
-      splats.startFormation();
       return;
     }
-    const vehicle = await loadVehicle(renderer, scene, camera, onProgress);
+    const vehicle = await vehiclePromise!;
     viewController = new CameraViewController(vehicle.cameraViews);
     document.body.classList.add('views-ready');
-    splats.startFormation();
     const remainingLoadingTime = MIN_LOADING_MS - (performance.now() - bootStartedAt);
     await Promise.all([
       splats.formed,
