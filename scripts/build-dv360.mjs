@@ -30,7 +30,7 @@ const html = (width, height) => `<!doctype html>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="styles.css">
   <script>
-    var clickTag = "https://landing-url.invalid/hyundai-accent";
+    var clickTag = "https://experience.morryai.com/";
     if (location.protocol === "file:" || location.hostname === "localhost" || location.hostname === "127.0.0.1") {
       clickTag = "http://localhost:4174/?experience=1";
     }

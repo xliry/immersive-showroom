@@ -22,4 +22,8 @@ Artifacts are written to `dv360/output/`. Each size contains:
 - a separate backup JPEG;
 - a separate polite-load JPEG under 40 KB.
 
-Local previews point to `http://localhost:4174/?experience=1`. Before trafficking, replace the fallback `https://landing-url.invalid/hyundai-accent` clickTag URL in each generated `index.html`, or set the detected exit URL in DV360 to the production Coolify showroom URL.
+The production build publishes the same preview at `/dv360/` and keeps the
+generated creatives under `/dv360/output/` so both formats can be tested on the
+Coolify domain before trafficking.
+
+Local previews point to `http://localhost:4174/?experience=1`. Deployed creatives use `https://experience.morryai.com/` as their clickTag destination.

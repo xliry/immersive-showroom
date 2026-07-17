@@ -7,7 +7,7 @@
     "dev": "vite --host 0.0.0.0",
     "typecheck": "tsc --noEmit",
     "lint": "tsc --noEmit",
-    "build": "tsc --noEmit && vite build",
+    "build": "npm run build:dv360 && tsc --noEmit && vite build && node scripts/copy-dv360-site.mjs",
     "build:dv360": "node scripts/build-dv360.mjs",
     "preview": "vite preview --host 0.0.0.0"
   },
